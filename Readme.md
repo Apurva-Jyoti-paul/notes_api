@@ -8,6 +8,18 @@ A lightweight notes app build using django rest framework and made production re
 
 
 
+[!alt txt](https://raw.githubusercontent.com/Apurva-Jyoti-paul/notes_api/master/Screenshots/Screenshot%20from%202022-12-30%2023-41-36.png)
+
+[!alt txt](https://raw.githubusercontent.com/Apurva-Jyoti-paul/notes_api/master/Screenshots/Screenshot%20from%202022-12-30%2023-46-58.png)
+
+[!alt](https://raw.githubusercontent.com/Apurva-Jyoti-paul/notes_api/master/Screenshots/Screenshot%20from%202022-12-30%2023-48-42.png)
+
+[!alt](https://raw.githubusercontent.com/Apurva-Jyoti-paul/notes_api/master/Screenshots/Screenshot%20from%202022-12-30%2023-49-19.png)
+
+[!alt](https://raw.githubusercontent.com/Apurva-Jyoti-paul/notes_api/master/Screenshots/Screenshot%20from%202022-12-30%2023-49-50.png)
+
+
+
 ### Setup
 
 ------
