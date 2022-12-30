@@ -76,7 +76,7 @@ For more information on the notes-id feature checkout : [note model](https://git
 
 
 
-### Debugging:
+### Debugging
 
 ------
 
@@ -98,3 +98,10 @@ sudo docker container ls -a
 sudo docker logs [container_id]
 ```
 
+
+
+### Testing
+
+------
+
+One can use clients like **Thunder Cient** extension in Vscode or **Postman** to test these API's
