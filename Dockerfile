@@ -7,7 +7,8 @@ WORKDIR /usr/src/notes_api
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-
+RUN apt-get update
+RUN apt-get install curl -y 
 #install psycopg2 dependencis for postgres
 
 # install dependencies
@@ -18,5 +19,6 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . .
+HEALTHCHECK CMD curl --fail http://localhost:8000/admin || exit 1
 
 ENTRYPOINT [ "bash","./entrypoint.sh" ]
