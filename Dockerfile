@@ -1,24 +1,16 @@
-# pull official base image
-FROM python:3.7-slim-buster
+FROM python:3.7-slim-buster as base
 
-# set work directory
-WORKDIR /usr/src/notes_api
-
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-RUN apt-get update
-RUN apt-get install curl -y 
-#install psycopg2 dependencis for postgres
-
-# install dependencies
-RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
+# Now multistage build
+FROM python:3.7-slim-buster
 
+WORKDIR /usr/src/notes_api
 
-# copy project
+COPY --from=base /usr/local/lib/python3.7/site-packages/ /usr/local/lib/python3.7/site-packages/
+COPY --from=base /usr/local/bin/ /usr/local/bin/
 COPY . .
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 HEALTHCHECK CMD curl --fail http://localhost:8000/admin || exit 1
-
 ENTRYPOINT [ "bash","./entrypoint.sh" ]

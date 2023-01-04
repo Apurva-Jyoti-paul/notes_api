@@ -116,3 +116,5 @@ Health Check
 sudo docker inspect --format='{{json .State.Health}}' [image_name]
 ```
 One can use clients like **Thunder Cient** extension in Vscode or **Postman** to test these API's
+
+
