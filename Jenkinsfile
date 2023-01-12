@@ -19,8 +19,7 @@ pipeline {
   stage('Basic Information') {
    steps {
     sh '''
-    echo tag: ${params.RELEASE_TAG}
-    echo "hello"
+    ls
     '''
    }
   }
