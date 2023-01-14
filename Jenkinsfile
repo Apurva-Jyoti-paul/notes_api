@@ -59,10 +59,11 @@ pipeline {
   stage('DeployToProd')
   {
     steps{
+      script{
   sshagent(credentials : ['prod']) {
-  sh "echo pwd"
-  sh "ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "docker run -d -p 8000:8000 ${env.registry}:${params.RELEASE_TAG}""
-}
+  sh '''ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "docker run -d -p 8000:8000 '''${env.registry}'''+:+'''${params.RELEASE_TAG}"'''
+     }
+      }
     }
   }
 
