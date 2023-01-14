@@ -61,7 +61,7 @@ pipeline {
     steps{
   sshagent(credentials : ['prod']) {
   sh "echo pwd"
-  sh 'ssh -t -t ubuntu@xx.xxx.xx.xx -o StrictHostKeyChecking=no "echo pwd && ls"'
+  sh 'ssh -t -t root@54.85.69.14 -o StrictHostKeyChecking=no "echo pwd && ls"'
 }
     }
   }
