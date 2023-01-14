@@ -56,6 +56,15 @@ pipeline {
    }
   }
 
+  stage('DeployToProd')
+  {
+    steps{
+  sshagent(credentials : ['prod']) {
+  sh "echo pwd"
+  sh 'ssh -t -t ubuntu@xx.xxx.xx.xx -o StrictHostKeyChecking=no "echo pwd && ls"'
+}
+    }
+  }
 
   stage('Garbage Collection') {
    steps {
