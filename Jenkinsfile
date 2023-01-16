@@ -59,11 +59,11 @@ pipeline {
 
   stage('DeployToProd')
   {
+    script{
     steps{
-      script{
-  sshagent(credentials : ['prod']) {
-      ssh -t "$server" -o StrictHostKeyChecking=no "ls"
-     }
+      sshagent(credentials : ['prod']) {
+      ssh -t api@54.85.69.14 -o StrictHostKeyChecking=no "ls"
+      }
       }
     }
   }
