@@ -61,7 +61,7 @@ pipeline {
     steps{
       script{
   sshagent(credentials : ['prod']) {
-  sh 'ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "ls -la"'
+  sh 'ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "ls"'
      }
       }
     }
@@ -69,9 +69,8 @@ pipeline {
 
   stage('Garbage Collection') {
    steps {
-    sh '''docker rmi $registry:${params.RELEASE_TAG}
-    docker image prune -a
-    '''
+    sh "docker rmi $registry:${params.RELEASE_TAG}"
+    sh "docker image prune -a"
    }
   }
  }
