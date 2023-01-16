@@ -65,7 +65,7 @@ pipeline {
     test="sds"
   }
   sh '''
-  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "echo $sds"
+  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "echo $test"
   '''
      }
       }
