@@ -60,9 +60,12 @@ pipeline {
   {
     steps{
       script{
+    environment {
+    prodimage= "${env.registry}"
+  }
   sshagent(credentials : ['prod']) {
   sh '''
-  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "ls"
+  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "echo $prodimage"
   '''
      }
       }
