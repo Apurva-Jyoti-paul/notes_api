@@ -61,7 +61,7 @@ pipeline {
     steps{
       script{
   sshagent(credentials : ['prod']) {
-  sh 'ssh -t api@54.85.69.14 -o StrictHostKeyChecking=no "ls"'
+      ssh -t api@54.85.69.14 -o StrictHostKeyChecking=no "ls"
      }
       }
     }
