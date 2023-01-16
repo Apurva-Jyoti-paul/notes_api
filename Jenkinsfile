@@ -69,7 +69,9 @@ pipeline {
 
   stage('Garbage Collection') {
    steps {
-    sh "docker rmi $registry:${params.RELEASE_TAG}"
+    sh '''docker rmi $registry:${params.RELEASE_TAG}
+    docker image prune -a
+    '''
    }
   }
  }
