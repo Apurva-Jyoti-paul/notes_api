@@ -61,11 +61,8 @@ pipeline {
     steps{
       script{
   sshagent(credentials : ['prod']) {
-  environment{
-    test="sds"
-  }
   sh '''
-  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "echo $test"
+  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "docker run -p 8000:8000 $registry:v1.0.0"
   '''
      }
       }
