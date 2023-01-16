@@ -4,7 +4,6 @@ pipeline {
   registry = "apurvajpaul/flipr"
   registryCredential = "fliprRegistry"
   projectPath = "/jenkins/data/workspace/djangoenn"
-  server="api@54.85.69.14"
  }
 
  agent any
@@ -59,11 +58,13 @@ pipeline {
 
   stage('DeployToProd')
   {
-    script{
     steps{
-      sshagent(credentials : ['prod']) {
-      ssh -t api@54.85.69.14 -o StrictHostKeyChecking=no "ls"
-      }
+      script{
+  sshagent(credentials : ['prod']) {
+  sh '''
+  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "ls"
+  '''
+     }
       }
     }
   }
