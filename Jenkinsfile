@@ -62,7 +62,7 @@ pipeline {
       script{
   sshagent(credentials : ['prod']) {
   sh '''
-  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "echo $registry"
+  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "docker run -p 8000:8000 $registry:${params.RELEASE_TAG}"
   '''
      }
       }
