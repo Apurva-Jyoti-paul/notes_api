@@ -48,12 +48,7 @@ pipeline {
   {
     steps{
       script{
-  sshagent(credentials : ['prod']) {
-
-  def release="${params.RELEASE_TAG}"
-  sh '''
-  mssh api@i-077b66a4d97cdf078  "pwd"'''
-     }
+    mssh api@i-077b66a4d97cdf078  "pwd"
       }
     }
   }
