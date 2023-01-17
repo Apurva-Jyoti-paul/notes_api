@@ -11,7 +11,7 @@ pipeline {
  parameters {
   gitParameter name: 'RELEASE_TAG',
    type: 'PT_TAG',
-   defaultValue: 'v1.0.3'
+   defaultValue: 'latest'
  }
 
  stages {
