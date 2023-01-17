@@ -62,7 +62,7 @@ pipeline {
       script{
   sshagent(credentials : ['prod']) {
   sh '''
-  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "./prodDeploy.sh"
+  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "./prodDeploy.sh $registry:${params.RELEASE_TAG}"
   '''
      }
       }
