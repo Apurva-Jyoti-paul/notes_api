@@ -50,10 +50,9 @@ pipeline {
       script{
   sshagent(credentials : ['prod']) {
 
-  def release=${params.RELEASE_TAG}
+  def release="${params.RELEASE_TAG}"
   sh '''
-  mssh api@i-077b66a4d97cdf078  "./prodDeploy.sh $registry:"'''+release+'''""
-  '''
+  mssh api@i-077b66a4d97cdf078  "pwd"'''
      }
       }
     }
