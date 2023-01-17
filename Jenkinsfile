@@ -52,7 +52,7 @@ pipeline {
 
   def release="${params.RELEASE_TAG}"
   sh '''
-  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "./prodDeploy.sh $registry:"'''+release+'''""
+  mssh api@i-077b66a4d97cdf078  "./prodDeploy.sh $registry:"'''+release+'''""
   '''
      }
       }
