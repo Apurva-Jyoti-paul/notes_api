@@ -11,7 +11,7 @@ pipeline {
  parameters {
   gitParameter name: 'RELEASE_TAG',
    type: 'PT_TAG',
-   defaultValue: 'latest'
+   defaultValue: 'v1.0.3'
  }
 
  stages {
@@ -48,9 +48,13 @@ pipeline {
   {
     steps{
       script{
-   sh '''
-   export DISPLAY=localhost:10.0 || mssh api@i-077b66a4d97cdf078 "./deployProd.sh apurvajpaul/flipr:latest"
-   '''
+  sshagent(credentials : ['prod']) {
+
+  def release="${params.RELEASE_TAG}"
+  sh '''
+  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "./prodDeploy.sh $registry:"'''+release+'''""
+  '''
+     }
       }
     }
   }
