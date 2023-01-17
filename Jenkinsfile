@@ -11,7 +11,7 @@ pipeline {
  parameters {
   gitParameter name: 'RELEASE_TAG',
    type: 'PT_TAG',
-   defaultValue: 'v1.0.3'
+   defaultValue: 'latest'
  }
 
  stages {
@@ -50,7 +50,7 @@ pipeline {
       script{
   sshagent(credentials : ['prod']) {
 
-  def release="${params.RELEASE_TAG}"
+  def release=${params.RELEASE_TAG}
   sh '''
   mssh api@i-077b66a4d97cdf078  "./prodDeploy.sh $registry:"'''+release+'''""
   '''
