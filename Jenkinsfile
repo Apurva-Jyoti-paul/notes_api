@@ -48,7 +48,7 @@ pipeline {
   {
     steps{
       script{
-    mssh api@i-077b66a4d97cdf078  "pwd"
+   sh "mssh api@i-077b66a4d97cdf078  "pwd""
       }
     }
   }
