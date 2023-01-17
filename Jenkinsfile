@@ -50,7 +50,7 @@ pipeline {
       script{
   sshagent(credentials : ['prod']) {
 
-  def release=${params.RELEASE_TAG}
+  def release="${params.RELEASE_TAG}"
   sh '''
  echo ''' + release + ''' 
  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "pwd"
