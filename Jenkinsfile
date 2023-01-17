@@ -34,18 +34,6 @@ pipeline {
    }
   }
 
-//   stage('Check Lint') {
-//    steps {
-//     sh "docker run --rm $registry:${params.RELEASE_TAG} flake8"
-//    }
-//   }
-
-//   stage('Run Tests') {
-//    steps {
-//     sh "docker run -v $projectPath/reports:/app/reports  --rm --network='host' --env-file=.test.env $registry:${params.RELEASE_TAG} coverage run -m pytest --verbose --junit-xml reports/results.xml"
-//    }
-//   }
-
   stage('Deploy Image') {
    steps {
     script {
@@ -61,9 +49,10 @@ pipeline {
     steps{
       script{
   sshagent(credentials : ['prod']) {
-    echo "${params.RELEASE_TAG}"
+
+  def release=${params.RELEASE_TAG}
   sh '''
-  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "./prodDeploy.sh $registry:${params.RELEASE_TAG}"
+ echo "$release" || ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "./prodDeploy.sh $registry:${params.RELEASE_TAG}"
   '''
      }
       }
