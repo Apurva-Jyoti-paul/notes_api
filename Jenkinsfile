@@ -48,7 +48,9 @@ pipeline {
   {
     steps{
       script{
-   sh "export DISPLAY=localhost:10.0 || mssh api@i-077b66a4d97cdf078 "pwd""
+   sh '''
+   export DISPLAY=localhost:10.0 || mssh api@i-077b66a4d97cdf078 "ls"
+   '''
       }
     }
   }
