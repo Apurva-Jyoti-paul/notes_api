@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   web:
-    image: ${imagedocker}
+    build: .
    # command: #gunicorn screencast.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/usr/src/notes_api/
       - static:/usr/src/notes_api/static/
     ports:
-      - 8000:8000
+      - 8000:80
     env_file:
       - ./.env.dev
     depends_on:

@@ -1,0 +1,27 @@
+2023-02-08 19:23:37,249 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2023-02-08 19:23:37,252 INFO supervisord started with pid 1
+2023-02-08 19:23:38,257 INFO spawned: 'redis_script' with pid 9
+2023-02-08 19:23:39,276 INFO success: redis_script entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2023-02-08 19:23:39,276 INFO exited: redis_script (exit status 2; expected)
+2023-02-08 19:23:40,281 INFO spawned: 'redis_script' with pid 10
+2023-02-08 19:23:41,233 INFO exited: redis_script (exit status 2; not expected)
+2023-02-08 19:23:42,237 INFO spawned: 'redis_script' with pid 11
+2023-02-08 19:23:43,195 INFO exited: redis_script (exit status 2; not expected)
+2023-02-08 19:23:45,201 INFO spawned: 'redis_script' with pid 12
+2023-02-08 19:23:46,147 INFO exited: redis_script (exit status 2; not expected)
+2023-02-08 19:23:49,155 INFO spawned: 'redis_script' with pid 13
+2023-02-08 19:23:50,133 INFO exited: redis_script (exit status 2; not expected)
+2023-02-08 19:23:51,134 INFO gave up: redis_script entered FATAL state, too many start retries too quickly
+2023-02-08 20:51:22,171 WARN received SIGTERM indicating exit request
+2023-02-08 20:51:23,035 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2023-02-08 20:51:23,036 INFO supervisord started with pid 1
+2023-02-08 20:51:24,040 INFO spawned: 'django_script' with pid 9
+2023-02-08 20:51:24,886 INFO exited: django_script (exit status 0; not expected)
+2023-02-08 20:51:25,891 INFO spawned: 'django_script' with pid 10
+2023-02-08 20:51:26,656 INFO exited: django_script (exit status 0; not expected)
+2023-02-08 20:51:28,661 INFO spawned: 'django_script' with pid 11
+2023-02-08 20:51:29,437 INFO exited: django_script (exit status 0; not expected)
+2023-02-08 20:51:32,444 INFO spawned: 'django_script' with pid 12
+2023-02-08 20:51:33,209 INFO exited: django_script (exit status 0; not expected)
+2023-02-08 20:51:34,211 INFO gave up: django_script entered FATAL state, too many start retries too quickly
+2023-02-08 21:25:02,345 WARN received SIGTERM indicating exit request
