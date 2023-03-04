@@ -43,7 +43,12 @@ pipeline {
     }
    }
   }
-
+stage('Packing AMI')
+{
+        steps {
+        sh 'packer build ./Iaas/packer.json'
+      }
+}
   // stage('DeployToProd')
   // {
   //   steps{

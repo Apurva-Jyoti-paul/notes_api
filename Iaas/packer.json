@@ -17,5 +17,13 @@
         "echo 'Hello, world!' > /tmp/hello.txt"
       ]
     }
-  ]
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }
+    ]
+
 }
