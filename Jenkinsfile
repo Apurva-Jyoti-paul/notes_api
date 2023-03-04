@@ -46,7 +46,9 @@ pipeline {
 stage('Packing AMI')
 {
     steps {
-        sh 'echo ${aws-secret-key}'
+        sh """
+        packer build -var 'access_key=${awsaccesskey}' -var 'secret_key=${awsaccesskey}' ./Iaas/packer.json
+        """
       }
 }
   // stage('DeployToProd')
