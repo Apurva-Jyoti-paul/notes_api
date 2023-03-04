@@ -31,6 +31,10 @@ RUN pip install --upgrade pip \
     && pip install -r requirements.txt \
     && pip install gunicorn
 
+RUN mkdir -p /var/log/containerlogs
+
+
+
 # Copy necessary configurations files
 RUN rm /etc/nginx/sites-enabled/default
 COPY docker/nginx.conf /etc/nginx/sites-enabled/default

@@ -7,12 +7,17 @@ services:
     volumes:
       - .:/usr/src/notes_api/
       - static:/usr/src/notes_api/static/
+      - /var/log/containerlogs:/var/log/containerlogs
     ports:
       - 8000:80
     env_file:
       - ./.env.dev
     depends_on:
       - db
+  clientfluent0:
+    build: ./fluentd
+    volumes:
+      - /var/log/containerlogs:/var/log/conatinerlogs
   db:
     image: postgres:13.0-alpine
     volumes:
