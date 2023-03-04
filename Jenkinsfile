@@ -47,7 +47,7 @@ stage('Packing AMI')
 {
     steps {
         sh """
-        packer build -var 'access_key=${awsaccesskey}' -var 'secret_key=${awsaccesskey}' ./Iaas/packer.json
+        packer build ./Iaas/packer.json
         """
       }
 }
