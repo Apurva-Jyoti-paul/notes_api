@@ -1,0 +1,21 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami":"ami-06878d265978313ca",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "my-ubuntu-20.04-{{isotime | clean_resource_name}}",
+      "ami_description": "My custom Ubuntu 20.04 AMI built with Packer"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "echo 'Hello, world!' > /tmp/hello.txt"
+      ]
+    }
+  ]
+}

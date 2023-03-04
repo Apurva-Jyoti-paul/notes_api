@@ -44,20 +44,20 @@ pipeline {
    }
   }
 
-  stage('DeployToProd')
-  {
-    steps{
-      script{
-  sshagent(credentials : ['prod']) {
+  // stage('DeployToProd')
+  // {
+  //   steps{
+  //     script{
+  // sshagent(credentials : ['prod']) {
 
-  def release="${params.RELEASE_TAG}"
-  sh '''
-  ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "./prodDeploy.sh $registry:"'''+release+'''""
-  '''
-     }
-      }
-    }
-  }
+  // def release="${params.RELEASE_TAG}"
+  // sh '''
+  // ssh -t -t api@54.85.69.14 -o StrictHostKeyChecking=no "./prodDeploy.sh $registry:"'''+release+'''""
+  // '''
+  //    }
+  //     }
+  //   }
+  // }
 
   stage('Garbage Collection') {
    steps {
