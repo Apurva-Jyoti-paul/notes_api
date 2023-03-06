@@ -3,8 +3,6 @@
     {
       "type": "amazon-ebs",
       "region": "us-east-1",
-      "access_key":"",
-      "secret_key":"",
       "source_ami":"ami-06878d265978313ca",
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
@@ -16,7 +14,7 @@
     {
       "type": "shell",
       "inline": [
-        "echo 'Hello, world!' > /hello.txt"
+        "echo 'Hello, world!' > /tmp/hello.txt"
       ]
     }
   ],
