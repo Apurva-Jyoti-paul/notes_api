@@ -46,9 +46,13 @@ pipeline {
 stage('Packing AMI')
 {
     steps {
+      script{
+        withAWS(credentials:'aws-key',region:'us-east-1'){
         sh """
         packer build ./Iaas/packer.json
         """
+        }
+        }
       }
 }
   // stage('DeployToProd')
