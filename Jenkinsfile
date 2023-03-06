@@ -51,6 +51,10 @@ stage('Packing AMI')
         sh """
         packer build ./Iaas/packer.json
         """
+        EC2_AMI_ID = sh(returnStdout: true, script: "cat manifest.json | jq -r '.builds[0].artifact_id' | cut -d: -f2").trim()
+        sh """
+        echo ${EC2_AMI_ID}
+        """
         }
         }
       }
