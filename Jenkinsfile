@@ -73,7 +73,26 @@ stage('Packing AMI')
   //     }
   //   }
   // }
+   stage('Deploy to EC2') {
+      steps {
+        script {
+           withAWS(credentials:'aws-key',region:'us-east-1'){
 
+    sh """
+     aws ec2 run-instances \
+    --image-id ${EC2_AMI_ID} \
+    --count 1 \
+    --instance-type t2.micro \
+    --key-name prod \
+    --security-group-ids sg-03c91b5cba5bc22fe \
+    --subnet-id subnet-0602ea70b8096f0c5 \
+    --block-device-mappings "[{\"DeviceName\":\"/dev/sdf\",\"Ebs\":{\"VolumeSize\":10,\"DeleteOnTermination\":false}}]" \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=production}]' 'ResourceType=volume,Tags=[{Key=Name,Value=demo-server-disk}]'
+          """
+          }
+        }
+      }
+    }
   stage('Garbage Collection') {
    steps {
     sh "docker rmi $registry:${params.RELEASE_TAG}"
