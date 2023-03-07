@@ -13,7 +13,7 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "setup.sh",
+      "source": "Iaas/setup.sh",
       "destination": "/home/ubuntu/setup.sh"
     },{
       "type": "shell",
