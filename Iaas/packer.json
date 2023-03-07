@@ -14,7 +14,9 @@
     {
       "type": "shell",
       "inline": [
-        "echo 'Hello, world!' > /tmp/hello.txt"
+        "sudo apt-get update",
+        "sudo apt-get install -y docker.io",
+        "sudo usermod -aG docker ubuntu"
       ]
     }
   ],
