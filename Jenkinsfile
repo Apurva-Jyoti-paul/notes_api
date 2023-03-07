@@ -92,12 +92,12 @@ stage('Packing AMI')
         }
       }
     }
-  stage('Garbage Collection') {
-   steps {
-    sh "docker rmi $registry:${params.RELEASE_TAG}"
-    sh "docker image prune -a -f"
-   }
-  }
+  // stage('Garbage Collection') {
+  //  steps {
+  //   sh "docker rmi $registry:${params.RELEASE_TAG}"
+  //   sh "docker image prune -a -f"
+  //  }
+  // }
  }
 
 
