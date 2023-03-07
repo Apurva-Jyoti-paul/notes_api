@@ -26,6 +26,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 sudo usermod -aG docker ubuntu
 
+echo "hello" 
+
 sudo docker run -d --restart=always -p 80:80 apurvajpaul/flipr:latest 
 
 
