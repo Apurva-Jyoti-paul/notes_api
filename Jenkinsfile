@@ -78,9 +78,9 @@ stage('Packing AMI')
         script {
            withAWS(credentials:'aws-key',region:'us-east-1'){
     InstanceId=sh(returnStdout:true,script:"cat InstanceDetails.json | jq -r '.Instances[0].InstanceId'").trim()
-    sh """
-    aws ec2 terminate-instances --instance-ids ${InstanceId}
-    """
+    // sh """
+    // aws ec2 terminate-instances --instance-ids ${InstanceId}
+    // """
     sh """
      aws ec2 run-instances \
     --image-id ${EC2_AMI_ID} \
@@ -90,7 +90,7 @@ stage('Packing AMI')
     --security-group-ids sg-03c91b5cba5bc22fe \
     --subnet-id subnet-0602ea70b8096f0c5 \
     --block-device-mappings [{\\"DeviceName\\":\\"/dev/sdf\\",\\"Ebs\\":{\\"VolumeSize\\":10,\\"DeleteOnTermination\\":false}}] \
-    --tag-specifications \'ResourceType=instance,Tags=[{Key=Name,Value=production}]\' \'ResourceType=volume,Tags=[{Key=Name,Value=demo-server-disk}]\' >> InstanceDetails.json
+    --tag-specifications \'ResourceType=instance,Tags=[{Key=Name,Value=production}]\' \'ResourceType=volume,Tags=[{Key=Name,Value=demo-server-disk}]\' > InstanceDetails.json
           """
           }
         }
