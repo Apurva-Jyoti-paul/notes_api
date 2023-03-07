@@ -51,7 +51,7 @@ stage('Packing AMI')
         sh """
         packer build ./Iaas/packer.json
         """
-        EC2_AMI_ID = sh(returnStdout: true, script: "cat manifest.json | jq -r '.builds[0].artifact_id' | cut -d: -f2").trim()
+        EC2_AMI_ID = sh(returnStdout: true, script: "cat manifest.json | jq -r '.builds[-1].artifact_id' | cut -d: -f2").trim()
         sh """
         echo ${EC2_AMI_ID}
         """
@@ -77,6 +77,10 @@ stage('Packing AMI')
       steps {
         script {
            withAWS(credentials:'aws-key',region:'us-east-1'){
+    InstanceId=sh(returnStdout:true,script:"cat InstanceDetails.json | jq -r '.Instances[0].InstanceId'").trim()
+    sh """
+    aws ec2 terminate-instances --instance-ids ${InstanceId}
+    """
     sh """
      aws ec2 run-instances \
     --image-id ${EC2_AMI_ID} \
